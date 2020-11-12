@@ -1,0 +1,2 @@
+# dango
+Dango = Daikazoku!
