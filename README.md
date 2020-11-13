@@ -9,4 +9,6 @@ Button shows new quote and reduces the value of quotes left by 1.
 
 https://imgur.com/3mG2X3n
 
-When number of quotes is 0 program terminates
+When number of quotes is 0 program plays video where Sir Ruslan sings a song!
+
+https://imgur.com/undefined
