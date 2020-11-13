@@ -168,7 +168,7 @@ public class Main extends Application {
     }
     public static void dameDane(int width, int height, Stage primaryStage){
 
-        Media media = new Media(new File("src/music.mp3").toURI().toString());
+        Media media = new Media(new File("src/damero.mp4").toURI().toString());
         MediaPlayer video = new MediaPlayer(media);
         MediaView mediaView = new MediaView(video);
 
@@ -179,7 +179,7 @@ public class Main extends Application {
         Scene scene = new Scene(root, width, height);
         primaryStage.setScene(scene);
         primaryStage.show();
-        //video.play();
+        video.play();
     }
 
 
