@@ -38,6 +38,8 @@ public class Main extends Application {
     Random random = new Random();
 
 
+    Media media = new Media(new File("src/damero.mp4").toURI().toString());
+    MediaPlayer video = new MediaPlayer(media);
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -99,7 +101,7 @@ public class Main extends Application {
                     magic(rand1[0], width, height, size, quote_num, label, tot_quot, image, button, primaryStage);
                 }else{
                     mediaPlayer.stop();
-                    dameDane(width, height, primaryStage, rand1);
+                    dameDane(width, height, primaryStage, rand1, video);
                 }
             }
 
@@ -169,7 +171,7 @@ public class Main extends Application {
         primaryStage.show();
 
     }
-    public static void dameDane(int width, int height, Stage primaryStage,int[] rand){
+    public static void dameDane(int width, int height, Stage primaryStage, int[] rand, MediaPlayer video){
 /*        File file = new File("src/Count.txt");
         FileReader reader = null;
         String line = "";
@@ -202,20 +204,20 @@ public class Main extends Application {
             e.printStackTrace();
         }*/
 
-        Platform.exit();
 
-/*
-        Media media = new Media(getClass().getResource("src/damero.mp4").toExternalForm());
-        MediaPlayer video = new MediaPlayer(media);
+
+
+
         MediaView mediaView = new MediaView(video);
 
         Group root = new Group();
+        root.getChildren().addAll(mediaView);
 
-        Scene scene = new Scene(root, width, height);
+        Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
-        video.play();*/
-
+        video.play();
+        //Platform.exit();
     }
 
 
