@@ -32,6 +32,9 @@ public class Main extends Application {
     int size = 30;
     int quote_num = 77;
 
+//Get access to dango music everywhere here
+    Media sound = new Media(new File("src/music.mp3").toURI().toString());
+    MediaPlayer mediaPlayer = new MediaPlayer(sound);
     Random random = new Random();
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -92,6 +95,7 @@ public class Main extends Application {
                 if(rand1[0] > 0){
                     magic(rand1[0], width, height, size, quote_num, label, tot_quot, image, button, primaryStage);
                 }else{
+                    mediaPlayer.stop();
                     dameDane(width, height, primaryStage);
                 }
             }
@@ -103,8 +107,7 @@ public class Main extends Application {
 
         //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
-        Media sound = new Media(new File("src/music.mp3").toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
         mediaPlayer.setVolume(0.05);
         mediaPlayer.play();
 
@@ -163,17 +166,15 @@ public class Main extends Application {
         primaryStage.show();
 
     }
-    public void dameDane(int width, int height, Stage primaryStage){
+    public static void dameDane(int width, int height, Stage primaryStage){
 
-        Media media = new Media(getClass().getResource("src/damero.mp4").toExternalForm());
+        Media media = new Media(new File("src/music.mp3").toURI().toString());
         MediaPlayer video = new MediaPlayer(media);
         MediaView mediaView = new MediaView(video);
 
-        //checking
-        Label label = new Label("hello");
 
         Group root = new Group();
-        root.getChildren().add(label);//mediaView);
+        root.getChildren().add(mediaView);
 
         Scene scene = new Scene(root, width, height);
         primaryStage.setScene(scene);
