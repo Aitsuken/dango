@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -17,9 +18,7 @@ import javafx.scene.media.MediaView;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -35,7 +34,11 @@ public class Main extends Application {
 //Get access to dango music everywhere here
     Media sound = new Media(new File("src/music.mp3").toURI().toString());
     MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
     Random random = new Random();
+
+
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         //Use random to get random quotes
@@ -96,7 +99,7 @@ public class Main extends Application {
                     magic(rand1[0], width, height, size, quote_num, label, tot_quot, image, button, primaryStage);
                 }else{
                     mediaPlayer.stop();
-                    dameDane(width, height, primaryStage);
+                    dameDane(width, height, primaryStage, rand1);
                 }
             }
 
@@ -166,20 +169,53 @@ public class Main extends Application {
         primaryStage.show();
 
     }
-    public static void dameDane(int width, int height, Stage primaryStage){
+    public static void dameDane(int width, int height, Stage primaryStage,int[] rand){
+/*        File file = new File("src/Count.txt");
+        FileReader reader = null;
+        String line = "";
+        try {
+            reader = new FileReader(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
-        Media media = new Media(new File("src/damero.mp4").toURI().toString());
+        assert reader != null;
+        BufferedReader br = new BufferedReader(reader);
+        try {
+            line = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        line =  String.valueOf(Integer.parseInt(line.trim()) + rand[1]);
+        System.out.println(line);
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        BufferedWriter out = new BufferedWriter(fw);
+        try {
+            out.write(line.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
+        Platform.exit();
+
+/*
+        Media media = new Media(getClass().getResource("src/damero.mp4").toExternalForm());
         MediaPlayer video = new MediaPlayer(media);
         MediaView mediaView = new MediaView(video);
 
-
         Group root = new Group();
-        root.getChildren().add(mediaView);
 
         Scene scene = new Scene(root, width, height);
         primaryStage.setScene(scene);
         primaryStage.show();
-        video.play();
+        video.play();*/
+
     }
 
 
